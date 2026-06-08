@@ -97,43 +97,10 @@ docker exec clab-sr-mpls-lab-PE-1 Cli -p 15 -c "show bgp evpn summary"
 docker exec clab-sr-mpls-lab-PE-1 Cli -p 15 -c "show patch panel detail"
 ```
 
-## Save Config Changes
-
-After making changes on a node, save them back to the configs directory:
-
-```bash
-# Save a single node
-docker exec clab-sr-mpls-lab-PE-1 Cli -p 15 -c "show running-config" > configs/PE-1.cfg
-
-# Save all nodes
-for NODE in PE-1 PE-2 P1 P2 P3 P4 P5 P6 BGP-RR CE-1-A CE-1-B; do
-  docker exec clab-sr-mpls-lab-${NODE} Cli -p 15 -c "show running-config" > configs/${NODE}.cfg
-done
-
-# Commit and push
-git add configs/
-git commit -m "Update configs"
-git push
-```
-
 ## Destroy the Lab
 
 ```bash
 sudo containerlab destroy -t topology.yaml
-```
-
-## Packet Captures
-
-```bash
-# Capture MPLS traffic on PE-1 core link (Ethernet1 = eth1 inside container)
-docker exec clab-sr-mpls-lab-PE-1 tcpdump -U -i eth1 -w - | wireshark -k -i -
-
-# Capture on CE attachment circuit
-docker exec clab-sr-mpls-lab-PE-1 tcpdump -U -i eth4 -w - | wireshark -k -i -
-
-# Save capture to file
-docker exec clab-sr-mpls-lab-PE-1 tcpdump -i eth1 -c 100 -w /tmp/capture.pcap
-docker cp clab-sr-mpls-lab-PE-1:/tmp/capture.pcap .
 ```
 
 ## Repository Structure
