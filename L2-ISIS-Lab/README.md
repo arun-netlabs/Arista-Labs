@@ -101,16 +101,6 @@ Access a router:
 docker exec -it clab-isis-lab-R1 Cli
 ```
 
-### Management Access
-
-| Router | Management IP |
-|--------|---------------|
-| R1     | 172.20.20.11  |
-| R2     | 172.20.20.12  |
-| R3     | 172.20.20.13  |
-| R4     | 172.20.20.14  |
-| R5     | 172.20.20.15  |
-
 ## Project Structure
 
 ```
