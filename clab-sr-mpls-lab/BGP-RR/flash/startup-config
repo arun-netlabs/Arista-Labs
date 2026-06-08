@@ -1,0 +1,70 @@
+! Startup-config last modified at Mon Jun  8 08:39:52 2026 by root
+! device: BGP-RR (cEOSLab, EOS-4.36.0FX-SRV6-47941929.4360FXSRV6 (engineering build))
+!
+no aaa root
+!
+no schedule tech-support
+!
+no service interface inactive port-id allocation disabled
+!
+service routing protocols model multi-agent
+!
+hostname BGP-RR
+!
+spanning-tree mode mstp
+!
+system l1
+   unsupported speed action error
+   unsupported error-correction action error
+!
+interface Ethernet1
+   description to-P1
+   no switchport
+   ip address 10.0.0.7/31
+   isis enable CORE
+   isis network point-to-point
+!
+interface Ethernet2
+   description to-P4
+   no switchport
+   ip address 10.0.0.12/31
+   isis enable CORE
+   isis network point-to-point
+!
+interface Loopback0
+   ip address 77.77.77.77/32
+   node-segment ipv4 index 77
+   isis enable CORE
+!
+interface Management0
+   ip address 172.20.20.8/24
+   ipv6 address 3fff:172:20:20::8/64
+!
+ip routing
+!
+router bgp 65000
+   router-id 77.77.77.77
+   no bgp default ipv4-unicast
+   timers bgp 0 0
+   bgp cluster-id 77.77.77.77
+   neighbor PE peer group
+   neighbor PE remote-as 65000
+   neighbor PE update-source Loopback0
+   neighbor PE route-reflector-client
+   neighbor PE send-community standard extended
+   neighbor 1.1.1.1 peer group PE
+   neighbor 2.2.2.2 peer group PE
+   !
+   address-family evpn
+      neighbor PE activate
+      neighbor PE encapsulation mpls next-hop-self source-interface Loopback0
+      next-hop resolution disabled
+!
+router isis CORE
+   no hello padding
+   net 49.0001.0770.7707.7077.00
+   is-type level-2
+   !
+   address-family ipv4 unicast
+!
+end

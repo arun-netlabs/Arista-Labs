@@ -1,0 +1,56 @@
+---
+BGP-RR:
+    username: admin
+    password: admin
+    platform: ceos
+    hostname: 172.20.20.8
+CE-1-A:
+    username: admin
+    password: admin
+    platform: ceos
+    hostname: 172.20.20.6
+CE-1-B:
+    username: admin
+    password: admin
+    platform: ceos
+    hostname: 172.20.20.10
+P1:
+    username: admin
+    password: admin
+    platform: ceos
+    hostname: 172.20.20.2
+P2:
+    username: admin
+    password: admin
+    platform: ceos
+    hostname: 172.20.20.5
+P3:
+    username: admin
+    password: admin
+    platform: ceos
+    hostname: 172.20.20.7
+P4:
+    username: admin
+    password: admin
+    platform: ceos
+    hostname: 172.20.20.11
+P5:
+    username: admin
+    password: admin
+    platform: ceos
+    hostname: 172.20.20.4
+P6:
+    username: admin
+    password: admin
+    platform: ceos
+    hostname: 172.20.20.12
+PE-1:
+    username: admin
+    password: admin
+    platform: ceos
+    hostname: 172.20.20.9
+PE-2:
+    username: admin
+    password: admin
+    platform: ceos
+    hostname: 172.20.20.3
