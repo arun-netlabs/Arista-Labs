@@ -59,7 +59,7 @@ VPWS Pseudowire: CE-1-A ←── Ethernet over SR-MPLS ──→ CE-1-B
 
 ```bash
 # Clone the repo
-git clone https://github.com/<your-username>/Arista-Labs.git
+git clone https://github.com/arun-netlabs/Arista-Labs.git
 cd Arista-Labs/EVPN-VPWS-Lab
 
 # Deploy

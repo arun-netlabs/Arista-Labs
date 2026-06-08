@@ -76,6 +76,13 @@ Pinging fc00:42:1:2:3:2222:: [fc00:42:1:2:3:2222::] with 64 bytes
 
 ## Usage
 
+## Quick Start
+
+```bash
+git clone https://github.com/arun-netlabs/Arista-Labs.git
+cd Arista-Labs/L2-ISIS-Lab
+```
+
 Deploy the lab:
 
 ```bash

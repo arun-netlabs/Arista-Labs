@@ -151,8 +151,8 @@ curl -sL https://containerlab.dev/setup | bash -s -- all
 ### Step 2: Clone This Repository
 
 ```bash
-git clone https://github.com/arun-netlabs/L2-EVPN-Lab.git
-cd L2-EVPN-Lab
+git clone https://github.com/arun-netlabs/Arista-Labs.git
+cd Arista-Labs/L2-EVPN-Lab
 ```
 
 ### Step 3: Import the cEOS-lab Image

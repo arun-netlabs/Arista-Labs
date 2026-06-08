@@ -102,6 +102,15 @@ VPLS allows a service provider to extend Layer-2 connectivity across an MPLS cor
 
 ---
 
+## Quick Start
+
+```bash
+git clone https://github.com/arun-netlabs/Arista-Labs.git
+cd Arista-Labs/LDP-VPLS
+```
+
+---
+
 ## Deployment
 
 ### Deploy the lab
