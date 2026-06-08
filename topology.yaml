@@ -1,0 +1,91 @@
+name: sr-mpls-lab
+
+topology:
+  nodes:
+    CE-1-A:
+      kind: ceos
+      image: ceos:latest
+      startup-config: configs/CE-1-A.cfg
+
+    PE-1:
+      kind: ceos
+      image: ceos:latest
+      startup-config: configs/PE-1.cfg
+
+    P1:
+      kind: ceos
+      image: ceos:latest
+      startup-config: configs/P1.cfg
+
+    P2:
+      kind: ceos
+      image: ceos:latest
+      startup-config: configs/P2.cfg
+
+    P3:
+      kind: ceos
+      image: ceos:latest
+      startup-config: configs/P3.cfg
+
+    P4:
+      kind: ceos
+      image: ceos:latest
+      startup-config: configs/P4.cfg
+
+    P5:
+      kind: ceos
+      image: ceos:latest
+      startup-config: configs/P5.cfg
+
+    P6:
+      kind: ceos
+      image: ceos:latest
+      startup-config: configs/P6.cfg
+
+    BGP-RR:
+      kind: ceos
+      image: ceos:latest
+      startup-config: configs/BGP-RR.cfg
+
+    PE-2:
+      kind: ceos
+      image: ceos:latest
+      startup-config: configs/PE-2.cfg
+
+    CE-1-B:
+      kind: ceos
+      image: ceos:latest
+      startup-config: configs/CE-1-B.cfg
+
+  links:
+    # CE-1-A to PE-1
+    - endpoints: ["CE-1-A:eth1", "PE-1:eth4"]         # CE-1-A:Et1 -- PE-1:Et4 (VPWS AC)
+
+    # PE-1 to Core
+    - endpoints: ["PE-1:eth1", "P1:eth1"]              # PE-1:Et1 -- P1:Et1
+    - endpoints: ["PE-1:eth2", "P2:eth1"]              # PE-1:Et2 -- P2:Et1
+    - endpoints: ["PE-1:eth3", "P3:eth1"]              # PE-1:Et3 -- P3:Et1
+
+    # Upper Path: P1 -- BGP-RR -- P4
+    - endpoints: ["P1:eth2", "BGP-RR:eth1"]            # P1:Et2 -- BGP-RR:Et1
+    - endpoints: ["P1:eth3", "P4:eth1"]                # P1:Et3 -- P4:Et1
+    - endpoints: ["BGP-RR:eth2", "P4:eth2"]            # BGP-RR:Et2 -- P4:Et2
+
+    # Cross-mesh: P1-P2, P3-P2, P4-P2
+    - endpoints: ["P1:eth4", "P2:eth2"]                # P1:Et4 -- P2:Et2
+    - endpoints: ["P3:eth3", "P2:eth3"]                # P3:Et3 -- P2:Et3
+    - endpoints: ["P4:eth3", "P2:eth4"]                # P4:Et3 -- P2:Et4
+
+    # Lower Path: P3 -- P6, P2 -- P6, P2 -- P5, P6 -- P5
+    - endpoints: ["P3:eth2", "P6:eth1"]                # P3:Et2 -- P6:Et1
+    - endpoints: ["P2:eth5", "P6:eth2"]                # P2:Et5 -- P6:Et2
+    - endpoints: ["P2:eth6", "P5:eth1"]                # P2:Et6 -- P5:Et1
+    - endpoints: ["P6:eth3", "P5:eth2"]                # P6:Et3 -- P5:Et2
+
+    # Core to PE-2
+    - endpoints: ["P4:eth4", "PE-2:eth1"]              # P4:Et4 -- PE-2:Et1
+    - endpoints: ["P2:eth7", "PE-2:eth2"]              # P2:Et7 -- PE-2:Et2
+    - endpoints: ["P5:eth3", "PE-2:eth3"]              # P5:Et3 -- PE-2:Et3
+
+    # PE-2 to CE-1-B
+    - endpoints: ["PE-2:eth4", "CE-1-B:eth1"]          # PE-2:Et4 -- CE-1-B:Et1 (VPWS AC)
