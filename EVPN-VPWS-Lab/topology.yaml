@@ -4,57 +4,57 @@ topology:
   nodes:
     CE-1-A:
       kind: ceos
-      image: ceos:latest
+      image: ceos:4.29.6M
       startup-config: configs/CE-1-A.cfg
 
     PE-1:
       kind: ceos
-      image: ceos:latest
+      image: ceos:4.29.6M
       startup-config: configs/PE-1.cfg
 
     P1:
       kind: ceos
-      image: ceos:latest
+      image: ceos:4.29.6M
       startup-config: configs/P1.cfg
 
     P2:
       kind: ceos
-      image: ceos:latest
+      image: ceos:4.29.6M
       startup-config: configs/P2.cfg
 
     P3:
       kind: ceos
-      image: ceos:latest
+      image: ceos:4.29.6M
       startup-config: configs/P3.cfg
 
     P4:
       kind: ceos
-      image: ceos:latest
+      image: ceos:4.29.6M
       startup-config: configs/P4.cfg
 
     P5:
       kind: ceos
-      image: ceos:latest
+      image: ceos:4.29.6M
       startup-config: configs/P5.cfg
 
     P6:
       kind: ceos
-      image: ceos:latest
+      image: ceos:4.29.6M
       startup-config: configs/P6.cfg
 
     BGP-RR:
       kind: ceos
-      image: ceos:latest
+      image: ceos:4.29.6M
       startup-config: configs/BGP-RR.cfg
 
     PE-2:
       kind: ceos
-      image: ceos:latest
+      image: ceos:4.29.6M
       startup-config: configs/PE-2.cfg
 
     CE-1-B:
       kind: ceos
-      image: ceos:latest
+      image: ceos:4.29.6M
       startup-config: configs/CE-1-B.cfg
 
   links:
